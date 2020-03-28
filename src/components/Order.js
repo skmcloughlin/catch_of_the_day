@@ -9,13 +9,17 @@ class Order extends React.Component {
         if (!fish) return null; //This is added to avoid errors when building the order with data from local storage and there aren't yet any fish back from Firebase sync
 
         if (!isAvailable) {
-            return <li key = {key}>Sorry, {fish ? fish.name : 'fish'} is no longer available</li>
+            return (
+              <li key={key}>Sorry, {fish ? fish.name : "fish"} is no longer available</li>
+            );
         }
-        return <li key={key}>
+        return (
+          <li key={key}>
             {count} lbs {fish.name}
-
-            {formatPrice(count*fish.price)}
-        </li>
+            {formatPrice(count * fish.price)}
+            <button onClick={() => this.props.removeFromOrder(key)}>&times;</button>
+          </li>
+        );
     }
     render() {
         const orderIds = Object.keys(this.props.order)
