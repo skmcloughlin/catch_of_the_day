@@ -1,7 +1,9 @@
-import React from "react";
+import React from "react"
+import PropTypes from "prop-types"
+
 
 //FUNCTIONAL STATELESS COMPONENT USING ES6 SYNTAX AND DESTRUCTURING
-const Header = ({ tagline }) => (
+const Header = props  => (
   <header className="top">
     <h1>
       Catch
@@ -12,12 +14,14 @@ const Header = ({ tagline }) => (
       Day
     </h1>
     <h3 className="tagline">
-      <span>{tagline}</span>
+      <span>{props.tagline}</span>
     </h3>
   </header>
 );
 
-
+Header.propTypes = {
+  tagline: PropTypes.string.isRequired
+}
 //FUNCTIONAL STATELESS COMPONENT USING ES6 SYNTAX
 // const Header = props => (
 //     <header className="top">
